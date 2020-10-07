@@ -30,7 +30,14 @@ $routes->setAutoRoute(true);
 
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
-$routes->get('/tes', 'Home::index');
+/* $routes->get('/', 'Home::index'); */
+$routes->get('/users', 'UserController::index');
+$routes->get('/users/(:num)', 'UserController::show');
+$routes->get('/users/create', 'UserController::create');
+$routes->post('/users', 'UserController::store');
+$routes->get('/users/(:num)/edit', 'UserController::edit');
+$routes->put('/users/(:num)', 'UserController::update');
+$routes->delete('/users/(:num)', 'UserController::delete');
 
 /**
  * --------------------------------------------------------------------
