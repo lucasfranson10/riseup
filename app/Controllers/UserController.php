@@ -1,5 +1,7 @@
 <?php namespace App\Controllers;
 
+use App\Models\User;
+
 class UserController extends BaseController
 {
     /**
@@ -7,7 +9,13 @@ class UserController extends BaseController
      */
 
     public function index(){
-        return view('users/index');
+        
+        $userModel = new User();
+        $string = $userModel->where(['user_id =' => 1])->get();
+        
+        var_dump($userModel->find(1)) ;
+       //dd( $this->db->table('user')->where(['user_id =' => '1']) );
+      //  return view('users/index');
     }
 
     /**
