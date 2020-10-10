@@ -19,7 +19,7 @@ class UserController extends BaseController
      * Show one of the users collection
      */
     public function show(){
-        return 'show';
+        echo view('users/profile');
     }
 
     /**
@@ -53,8 +53,9 @@ class UserController extends BaseController
     /**
      * Show the page for edit user
      */
-    public function edit(){
-        return 'edit';
+    public function edit($id){
+        $userModel = new User(); 
+        echo view('users/edit', ['user' => $userModel->find($id)]);
     }
 
     /**

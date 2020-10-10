@@ -35,7 +35,7 @@ $routes->get('/users', 'UserController::index');
 $routes->get('/users/(:num)', 'UserController::show');
 $routes->get('/users/create', 'UserController::create');
 $routes->post('/users', 'UserController::store');
-$routes->get('/users/(:num)/edit', 'UserController::edit');
+$routes->get('/users/(:num)/edit', 'UserController::edit/$1');
 $routes->put('/users/(:num)', 'UserController::update');
 $routes->delete('/users/(:num)/delete', 'UserController::delete');
 
