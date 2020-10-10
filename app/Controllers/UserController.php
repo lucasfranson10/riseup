@@ -10,12 +10,9 @@ class UserController extends BaseController
 
     public function index(){
         
-        $userModel = new User();
-        $string = $userModel->where(['user_id =' => 1])->get();
+        $userModel = new User(); 
         
-        var_dump($userModel->find(1)) ;
-       //dd( $this->db->table('user')->where(['user_id =' => '1']) );
-      //  return view('users/index');
+        echo view('users/index', ['users' => $userModel->findAll()]);
     }
 
     /**
@@ -28,8 +25,8 @@ class UserController extends BaseController
     /**
      * Show the page for the creation 
      */
-    public function create(){
-        return 'create';
+    public function create(){  
+        echo view('users/create');
     }
 
 
@@ -37,7 +34,20 @@ class UserController extends BaseController
      * Save in the database the data of creation
      */
     public function store(){
-        return 'store';
+        $model = new User();
+        if ($this->request->getMethod() === 'post' && $this->validate([
+                'user_name' => 'required',
+                'user_email'  => 'required'
+            ]))
+        {
+            echo $model->save([
+                'user_name' => $this->request->getPost('user_name'),
+                'user_email'  => $this->request->getPost('user_email'),
+            ]);
+    
+            echo view('users/create');
+    
+        }
     }
 
     /**
@@ -55,7 +65,7 @@ class UserController extends BaseController
     }
 
     public function delete(){
-
+        return 'delete';
     }
 
     /**

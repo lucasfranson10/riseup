@@ -11,11 +11,11 @@ class User extends Model
     protected $returnType = 'array';
 
     protected $useTimestamps = false;
-    protected $createdField  = 'created_at';
+   /*  protected $createdField  = 'created_at';
     protected $updatedField  = 'updated_at';
-    protected $deletedField  = 'deleted_at';
+    protected $deletedField  = 'deleted_at'; */
 
-    protected $allowedFields = ['user_name', 'time', 'user_email' , 'user_avatar'];
+    protected $allowedFields = ['user_name', 'user_email'];
 
     
 }
