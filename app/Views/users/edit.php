@@ -14,13 +14,19 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
-                <h1>New User</h1>
+			    <a href="/users" class="btn btn-primary" role="button">Home</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h1>Update User</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-6">
                 <?= \Config\Services::validation()->listErrors(); ?>
-                <form method="put" action="/users">
+                <form method="post" action="/users/<?=$user['user_id']?>">
+                    <input type="hidden" name="_method" value="PUT" />
                     <?= csrf_field() ?>
                     <div class="form-group">
                         <label for="user_name">Username</label>
@@ -29,7 +35,8 @@
                                class="form-control" 
                                id="user_name" 
                                placeholder="Username" 
-                               value= <?= $user['user_name']?> >
+                               value= '<?= $user['user_name']?>' 
+                               required>
                     </div>
                     <div class="form-group">
                         <label for="user_email">Email address</label>
@@ -39,7 +46,8 @@
                                id="user_email" 
                                aria-describedby="emailHelp" 
                                placeholder="Enter email"
-                               value= <?= $user['user_email']?>>
+                               value= '<?= $user['user_email']?>'
+                               required>
                     </div>
                     <button type="submit" class="btn btn-primary">Submit</button>
                 </form>

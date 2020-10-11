@@ -9,7 +9,7 @@ class UserController extends BaseController
      */
 
     public function index(){
-        
+        echo "index";
         $userModel = new User(); 
         
         echo view('users/index', ['users' => $userModel->findAll()]);
@@ -19,6 +19,7 @@ class UserController extends BaseController
      * Show one of the users collection
      */
     public function show(){
+        echo "show";
         echo view('users/profile');
     }
 
@@ -26,6 +27,7 @@ class UserController extends BaseController
      * Show the page for the creation 
      */
     public function create(){  
+        echo "create";
         echo view('users/create');
     }
 
@@ -34,13 +36,14 @@ class UserController extends BaseController
      * Save in the database the data of creation
      */
     public function store(){
+        echo "store";
         $model = new User();
         if ($this->request->getMethod() === 'post' && $this->validate([
                 'user_name' => 'required',
                 'user_email'  => 'required'
             ]))
         {
-            echo $model->save([
+            $model->save([
                 'user_name' => $this->request->getPost('user_name'),
                 'user_email'  => $this->request->getPost('user_email'),
             ]);
@@ -54,6 +57,7 @@ class UserController extends BaseController
      * Show the page for edit user
      */
     public function edit($id){
+        echo "edit";
         $userModel = new User(); 
         echo view('users/edit', ['user' => $userModel->find($id)]);
     }
@@ -61,24 +65,27 @@ class UserController extends BaseController
     /**
      * Update the data in the database
      */
-    public function update(){
-        return 'update';
+    public function update($id){
+        $userModel = new User();
+        if ($this->request->getMethod() === 'put' && $this->validate([
+                'user_name' => 'required',
+                'user_email'  => 'required'
+            ]))
+        {
+            $userModel->update($id, [
+                'user_name' => $this->request->getPost('user_name'),
+                'user_email'  => $this->request->getPost('user_email'),
+            ]);
+    
+            echo view('users/edit', ['user' => $userModel->find($id)]);
+    
+        }
     }
 
-    public function delete(){
-        return 'delete';
-    }
-
-    /**
-     * Validation of request
-     */
-    private function validateReq(){
-
-        return /* request()->validate([
-            'title' => 'required',
-            'excerpt' => 'required',
-            'body' => 'required',
-        ]) */;
+    public function delete($id){
+        $userModel = new User();
+        $user = $userModel->delete($id);
+        return $this->response->redirect(site_url('/users'));
     }
 
 }
