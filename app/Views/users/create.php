@@ -1,24 +1,10 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
-    <!--  All snippets are MIT license http://bootdey.com/license -->
-    <title>User list page - Bootdey.com</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/app.css" rel="stylesheet">
-    <!-- <style type="text/css"> </style> -->
-</head>
-<body>
+<?= $this->extend('users/layout') ?>
+
+<?= $this->section('content') ?>
+
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
-			    <a href="/users" class="btn btn-primary" role="button">Home</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 colTitle">
                 <h1>New User</h1>
             </div>
         </div>
@@ -40,11 +26,5 @@
             </div>
         </div>
     </div>
-    
-<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script type="text/javascript">
-	
-</script>
-</body>
-</html>
+
+<?= $this->endSection() ?>

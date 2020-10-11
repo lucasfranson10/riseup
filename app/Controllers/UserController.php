@@ -9,7 +9,6 @@ class UserController extends BaseController
      */
 
     public function index(){
-        echo "index";
         $userModel = new User(); 
         
         echo view('users/index', ['users' => $userModel->findAll()]);
@@ -27,7 +26,6 @@ class UserController extends BaseController
      * Show the page for the creation 
      */
     public function create(){  
-        echo "create";
         echo view('users/create');
     }
 
@@ -36,7 +34,6 @@ class UserController extends BaseController
      * Save in the database the data of creation
      */
     public function store(){
-        echo "store";
         $model = new User();
         if ($this->request->getMethod() === 'post' && $this->validate([
                 'user_name' => 'required',
@@ -57,7 +54,6 @@ class UserController extends BaseController
      * Show the page for edit user
      */
     public function edit($id){
-        echo "edit";
         $userModel = new User(); 
         echo view('users/edit', ['user' => $userModel->find($id)]);
     }

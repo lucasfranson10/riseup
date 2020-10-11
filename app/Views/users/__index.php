@@ -1,10 +1,20 @@
-<?= $this->extend('users/layout') ?>
-
-<?= $this->section('content') ?>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <!--  This file has been downloaded from bootdey.com    @bootdey on twitter -->
+    <!--  All snippets are MIT license http://bootdey.com/license -->
+    <title>User list page - Bootdey.com</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/css/app.css" rel="stylesheet">
+    <!-- <style type="text/css"> </style> -->
+</head>
+<body>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
 <div class="container">
 	<div class="row">
-		<div class="col-md-3 createBtn">
+		<div class="col-md-3">
 			<a href="/users/create" class="btn btn-primary" role="button">Create a new user</a>
 		</div>
 	</div>
@@ -65,7 +75,7 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- <ul class="pagination pull-right">
+				<ul class="pagination pull-right">
 					<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
 					<li><a href="#">1</a></li>
 					<li><a href="#">2</a></li>
@@ -73,10 +83,15 @@
 					<li><a href="#">4</a></li>
 					<li><a href="#">5</a></li>
 					<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-				</ul> -->
+				</ul>
 			</div>
 		</div>
 	</div>
 </div>
-
-<?= $this->endSection() ?>
+<script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	
+</script>
+</body>
+</html>

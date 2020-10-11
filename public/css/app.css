@@ -1,6 +1,19 @@
-body{margin-top:20px;}
+body{margin-top:0px;}
 
+.col-md-3.createBtn{
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
 
+.col-lg-6.colTitle{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.row.rowTitle{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
 /* USER LIST TABLE */
 .user-list tbody td > img {
     position: relative;
