@@ -18,9 +18,9 @@ class UserController extends BaseController
     /**
      * Show one of the users collection
      */
-    public function show(){
-        echo "show";
-        echo view('users/profile');
+    public function show($id){
+        $userModel = new User(); 
+        echo view('users/profile', ['user' => $userModel->find($id)]);
     }
 
     /**

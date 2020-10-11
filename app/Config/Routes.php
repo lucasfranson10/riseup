@@ -33,7 +33,7 @@ $routes->setAutoRoute(true);
 /* $routes->get('/', 'Home::index'); */
 $routes->put('/users/(:num)', 'UserController::update/$1');
 $routes->get('/users', 'UserController::index');
-$routes->get('/users/(:num)', 'UserController::show');
+$routes->get('/users/(:num)', 'UserController::show/$1');
 $routes->get('/users/create', 'UserController::create');
 $routes->post('/users', 'UserController::store');
 $routes->get('/users/(:num)/edit', 'UserController::edit/$1');
