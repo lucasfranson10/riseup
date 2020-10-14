@@ -1,5 +1,14 @@
 body{margin-top:0px;}
 
+.page-footer.font-small.teal.pt-4 {
+	position: fixed;
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	color: white;
+	text-align: center;
+ }
+
 .col-md-3.createBtn{
 	margin-top: 20px;
 	margin-bottom: 20px;

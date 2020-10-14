@@ -1,25 +1,48 @@
 <?php namespace App\Controllers;
 
-use App\Models\User;
 
 class UserController extends BaseController
 {
+    public $default = [
+		'hostname' => 'http://localhost',
+        'port' => '8081',
+        'url' => '/user'
+	];
+
+    
+    private function setURL(){
+
+        return $this->default['hostname'].':'.$this->default['port'].$this->default['url'];
+    }
+
+    private function requiredField(){
+        echo "req";
+        return [
+            'user_name' => 'required',
+            'user_email'  => 'required',
+            'user_prof'  => 'required',
+            'user_exp'  => 'required',
+            'user_phone'  => 'required',
+            'user_loc'  => 'required',
+        ];
+    }
+
     /**
      * Show all the users
      */
-
     public function index(){
-        $userModel = new User(); 
-        
-        echo view('users/index', ['users' => $userModel->findAll()]);
+        $client = \Config\Services::curlrequest();
+        $response = json_decode($client->request('GET', $this->setURL())->getBody());
+        echo view('users/index', ['user' => $response]);
     }
 
     /**
      * Show one of the users collection
      */
     public function show($id){
-        $userModel = new User(); 
-        echo view('users/profile', ['user' => $userModel->find($id)]);
+        $client = \Config\Services::curlrequest();
+        $response = json_decode($client->request('GET', $this->setURL()."/$id")->getBody());
+        echo view('users/profile', ['user' => $response]);
     }
 
     /**
@@ -29,23 +52,28 @@ class UserController extends BaseController
         echo view('users/create');
     }
 
-
+/**
+ * asdj
+ */
     /**
      * Save in the database the data of creation
      */
     public function store(){
-        $model = new User();
-        if ($this->request->getMethod() === 'post' && $this->validate([
-                'user_name' => 'required',
-                'user_email'  => 'required'
-            ]))
+        if ($this->request->getMethod() === 'post' && $this->validate($this->requiredField()))
         {
-            $model->save([
-                'user_name' => $this->request->getPost('user_name'),
-                'user_email'  => $this->request->getPost('user_email'),
+            $client = \Config\Services::curlrequest();
+            $client->request('POST', $this->setURL(),[
+                'form_params' => [
+                    'user_name' => $this->request->getPost('user_name'),
+                    'user_email'  => $this->request->getPost('user_email'),
+                    'user_prof' => $this->request->getPost('user_prof'),
+                    'user_exp' => $this->request->getPost('user_exp'),
+                    'user_phone' => $this->request->getPost('user_phone'),
+                    'user_loc' => $this->request->getPost('user_loc'),
+                ]
             ]);
     
-            echo view('users/create');
+            return $this->response->redirect(site_url('/users'));
     
         }
     }
@@ -54,33 +82,37 @@ class UserController extends BaseController
      * Show the page for edit user
      */
     public function edit($id){
-        $userModel = new User(); 
-        echo view('users/edit', ['user' => $userModel->find($id)]);
+        $client = \Config\Services::curlrequest();
+        $response = json_decode($client->request('GET', $this->setURL(). "/$id")->getBody()); 
+        echo view('users/edit', ['user' => $response]);
     }
 
     /**
      * Update the data in the database
      */
     public function update($id){
-        $userModel = new User();
-        if ($this->request->getMethod() === 'put' && $this->validate([
-                'user_name' => 'required',
-                'user_email'  => 'required'
-            ]))
+        if ($this->request->getMethod() === 'put' &&  $this->validate($this->requiredField()))
         {
-            $userModel->update($id, [
-                'user_name' => $this->request->getPost('user_name'),
-                'user_email'  => $this->request->getPost('user_email'),
+            $client = \Config\Services::curlrequest();
+            $response = $client->request('PUT', $this->setURL() ."/$id",[
+                'headers' => 'Content-Type: application/x-www-form-urlencoded',
+                'form_params' => [
+                    'user_name' => $this->request->getPost('user_name'),
+                    'user_email'  => $this->request->getPost('user_email'),
+                    'user_prof' => $this->request->getPost('user_prof'),
+                    'user_exp' => $this->request->getPost('user_exp'),
+                    'user_phone' => $this->request->getPost('user_phone'),
+                    'user_loc' => $this->request->getPost('user_loc'),
+                ]
             ]);
-    
-            echo view('users/edit', ['user' => $userModel->find($id)]);
+            return $this->response->redirect(site_url('/users'));
     
         }
     }
 
     public function delete($id){
-        $userModel = new User();
-        $user = $userModel->delete($id);
+        $client = \Config\Services::curlrequest();
+        $response = json_decode($client->request('DELETE', $this->setURL() . "/$id/delete")->getBody());
         return $this->response->redirect(site_url('/users'));
     }
 

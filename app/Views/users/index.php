@@ -24,43 +24,45 @@
 							</tr>
 						</thead>
 						<tbody>
-							<?php foreach($users as $user):?>
-								
+							
+							<?php foreach($user as $user):?>
 								<tr>
 									<td>
 										<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
-										<a href="#" class="user-link"> <?= $user['user_name'] ?> </a>
+										<a href="#" class="user-link"> <?= $user->user_name ?> </a>
 									</td>
 									<td>
-										<?= $user['time'] ?>
+										<?= '20/3/2014' ?>
 									</td>
 									<td class="text-center">
 										<span class="label label-default">Inactive</span>
 									</td>
 									<td>
-										<a href="#"> <?= $user['user_email'] ?></a>
+										<a href="#"> <?= $user->user_email ?></a>
 									</td>
 									<td style="width: 20%;">
-										<a href="/users/<?= $user['user_id'] ?>" class="table-link">
+										<a href="/users/<?= $user->user_id ?>" class="table-link">
 											<span class="fa-stack">
 												<i class="fa fa-square fa-stack-2x"></i>
 												<i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
 											</span>
 										</a>
-										<a href="/users/<?= $user['user_id']?>/edit" class="table-link">
+										<a href="/users/<?= $user->user_id ?>/edit" class="table-link">
 											<span class="fa-stack">
 												<i class="fa fa-square fa-stack-2x"></i>
 												<i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
 											</span>
 										</a>
-										<a href="/users/<?= $user['user_id']?>/delete" class="table-link danger">	
+										<a href="/users/<?= $user->user_id ?>/delete" class="table-link danger">	
 											<span class="fa-stack">
 												<i class="fa fa-square fa-stack-2x"></i>
 												<i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
 											</span>
 										</a>
 									</td>
+
 								</tr>
+								
 							<?php endforeach; ?>
 						</tbody>
 					</table>

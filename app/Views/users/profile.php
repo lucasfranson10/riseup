@@ -9,29 +9,29 @@
           <img class="w-100" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
         </div>
         <div class="mb-2 d-flex">
-          <h4 class="font-weight-normal"><?= $user['user_name'] ?></h4>
+          <h4 class="font-weight-normal"><?= $user[0]->user_name ?></h4>
         </div>
         <div class="mb-2">
           <ul class="list-unstyled">
             <li class="media">
               <span class="w-25 text-black font-weight-normal">Profession:</span>
-              <label class="media-body">Design</label>
+              <label class="media-body"><?= $user[0]->user_prof ?></label>
             </li>
             <li class="media">
               <span class="w-25 text-black font-weight-normal">Experience: </span>
-              <label class="media-body">10  Years</label>
+              <label class="media-body"><?= $user[0]->user_exp ?></label>
             </li>
             <li class="media">
               <span class="w-25 text-black font-weight-normal">Phone: </span>
-              <label class="media-body">789 456 1230</label>
+              <label class="media-body"><?= $user[0]->user_phone ?></label>
             </li>
             <li class="media">
               <span class="w-25 text-black font-weight-normal">Email: </span>
-              <label class="media-body"><?= $user['user_email'] ?></label>
+              <label class="media-body"><?= $user[0]->user_email ?></label>
             </li>
             <li class="media">
               <span class="w-25 text-black font-weight-normal">Location: </span>
-              <label class="media-body">5557 Cottey St Fort Worth, Texas(TX), 76119, New York, USA</label>
+              <label class="media-body"><?= $user[0]->user_loc ?></label>
             </li>
           </ul>
         </div>
