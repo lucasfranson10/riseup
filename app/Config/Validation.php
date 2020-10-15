@@ -33,4 +33,13 @@ class Validation
 	//--------------------------------------------------------------------
 	// Rules
 	//--------------------------------------------------------------------
+
+	public $registerUser = [
+        	'user_name' => 'required',
+            'user_email'  => 'required',
+            'user_prof'  => 'required',
+            'user_exp'  => 'required',
+            'user_phone'  => 'required',
+            'user_loc'  => 'required',
+    ];
 }

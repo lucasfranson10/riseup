@@ -16,7 +16,6 @@ class UserController extends BaseController
     }
 
     private function requiredField(){
-        echo "req";
         return [
             'user_name' => 'required',
             'user_email'  => 'required',
@@ -33,7 +32,7 @@ class UserController extends BaseController
     public function index(){
         $client = \Config\Services::curlrequest();
         $response = json_decode($client->request('GET', $this->setURL())->getBody());
-        echo view('users/index', ['user' => $response]);
+        echo view('users/index', ['user' => $response, 'serv' => $this->default]);
     }
 
     /**
@@ -42,7 +41,7 @@ class UserController extends BaseController
     public function show($id){
         $client = \Config\Services::curlrequest();
         $response = json_decode($client->request('GET', $this->setURL()."/$id")->getBody());
-        echo view('users/profile', ['user' => $response]);
+        echo view('users/profile', ['user' => $response, 'serv' => $this->default]);
     }
 
     /**
@@ -59,20 +58,40 @@ class UserController extends BaseController
      * Save in the database the data of creation
      */
     public function store(){
+
+        if (empty($this->request->getFile('user_avatar')))
+        {
+             $this->form_validation->set_rules('user_avatar', 'file', 'required');
+        
+        }
+        
         if ($this->request->getMethod() === 'post' && $this->validate($this->requiredField()))
         {
-            $client = \Config\Services::curlrequest();
-            $client->request('POST', $this->setURL(),[
-                'form_params' => [
-                    'user_name' => $this->request->getPost('user_name'),
-                    'user_email'  => $this->request->getPost('user_email'),
-                    'user_prof' => $this->request->getPost('user_prof'),
-                    'user_exp' => $this->request->getPost('user_exp'),
-                    'user_phone' => $this->request->getPost('user_phone'),
-                    'user_loc' => $this->request->getPost('user_loc'),
-                ]
-            ]);
-    
+
+            $curl = curl_init();
+
+            curl_setopt_array($curl, array(
+                                    CURLOPT_URL => $this->setURL(),
+                                    CURLOPT_RETURNTRANSFER => true,
+                                    CURLOPT_ENCODING => "",
+                                    CURLOPT_MAXREDIRS => 10,
+                                    CURLOPT_TIMEOUT => 0,
+                                    CURLOPT_FOLLOWLOCATION => true,
+                                    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+                                    CURLOPT_CUSTOMREQUEST => "POST",
+                                    CURLOPT_POSTFIELDS => array('user_name' => $this->request->getPost('user_name'),
+                                                                'user_email'  => $this->request->getPost('user_email'),
+                                                                'user_prof' => $this->request->getPost('user_prof'),
+                                                                'user_exp' => $this->request->getPost('user_exp'),
+                                                                'user_phone' => $this->request->getPost('user_phone'),
+                                                                'user_loc' => $this->request->getPost('user_loc'),
+                                                                'user_avatar'=> new \CURLFILE($this->request->getFile('user_avatar', 'image/png'))),
+                                ));
+
+            $response = curl_exec($curl);
+
+            curl_close($curl);
+
             return $this->response->redirect(site_url('/users'));
     
         }

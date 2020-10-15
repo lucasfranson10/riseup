@@ -6,7 +6,7 @@
     <div class="row rowTitle">
       <div class="col-lg-5 col-md-6 offset-md-3 offset-lg-3">
         <div class="mb-2">
-          <img class="w-100" src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="">
+          <img class="w-100" src="<?= $serv['hostname'].":".$serv['port'].$user[0]->user_avatar?>" alt="">
         </div>
         <div class="mb-2 d-flex">
           <h4 class="font-weight-normal"><?= $user[0]->user_name ?></h4>

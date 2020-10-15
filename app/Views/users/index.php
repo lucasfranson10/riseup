@@ -18,7 +18,7 @@
 							<tr>
 								<th><span>User</span></th>
 								<th><span>Created</span></th>
-								<th class="text-center"><span>Status</span></th>
+								<th class="text-center"><span>Phone</span></th>
 								<th><span>Email</span></th>
 								<th>&nbsp;</th>
 							</tr>
@@ -28,14 +28,14 @@
 							<?php foreach($user as $user):?>
 								<tr>
 									<td>
-										<img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+										<img src="<?= $serv['hostname'].":".$serv['port'].$user->user_avatar?>" alt="">
 										<a href="#" class="user-link"> <?= $user->user_name ?> </a>
 									</td>
 									<td>
-										<?= '20/3/2014' ?>
+										<?= $user->created_at ?>
 									</td>
 									<td class="text-center">
-										<span class="label label-default">Inactive</span>
+										<span class="label label-default"><?= $user->user_phone?></span>
 									</td>
 									<td>
 										<a href="#"> <?= $user->user_email ?></a>
@@ -67,15 +67,6 @@
 						</tbody>
 					</table>
 				</div>
-				<!-- <ul class="pagination pull-right">
-					<li><a href="#"><i class="fa fa-chevron-left"></i></a></li>
-					<li><a href="#">1</a></li>
-					<li><a href="#">2</a></li>
-					<li><a href="#">3</a></li>
-					<li><a href="#">4</a></li>
-					<li><a href="#">5</a></li>
-					<li><a href="#"><i class="fa fa-chevron-right"></i></a></li>
-				</ul> -->
 			</div>
 		</div>
 	</div>

@@ -53,11 +53,11 @@
                                 name="user_phone" 
                                 class="form-control" 
                                 id="user_phone" 
-                                placeholder="123-45-678" 
-                                pattern="[0-9]{3}-[0-9]{2}-[0-9]{3}"
+                                placeholder="123456789" 
+                                pattern="[0-9]{9}" 
                                 value= '<?= $user[0]->user_phone?>'
                                 required>
-                        <small>Format: 123-45-678</small>
+                        <small>Format: 12345678</small>
                     </div>
 
                      <div class="form-group">
