@@ -19,8 +19,7 @@
   </a>
 </nav>
 
-<?= $this->renderSection('content') ?>
-
+  <?= $this->renderSection('content') ?>
 <!-- Footer -->
 <footer class="page-footer font-small teal pt-4 bg-dark">
 

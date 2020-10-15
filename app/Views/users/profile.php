@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 
-<div class="container">
+<div class="container main ">
     <div class="row rowTitle">
       <div class="col-lg-5 col-md-6 offset-md-3 offset-lg-3">
         <div class="mb-2">

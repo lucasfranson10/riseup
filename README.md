@@ -62,3 +62,14 @@ Additionally, make sure that the following extensions are enabled in your PHP:
 - [mbstring](http://php.net/manual/en/mbstring.installation.php)
 - [mysqlnd](http://php.net/manual/en/mysqlnd.install.php)
 - xml (enabled by default - don't turn it off)
+
+## Use this app
+
+In App/UserController.php edit the default configuration for your serve slim framework
+
+
+You can see the app works in this photos:
+
+![](relative url imagesApp/front.png)
+![](relative url imagesApp/register.png)
+![](relative url imagesApp/show.png)

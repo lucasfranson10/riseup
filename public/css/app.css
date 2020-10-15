@@ -2,11 +2,18 @@ body{margin-top:0px;}
 
 .page-footer.font-small.teal.pt-4 {
 	position: fixed;
-	left: 0;
+	right: 0;
 	bottom: 0;
+	left: 0;
+	padding: 1rem;
 	width: 100%;
 	color: white;
 	text-align: center;
+ }
+
+ .container.main{
+	overflow:hidden;
+	margin-bottom: 10%;
  }
 
 .col-md-3.createBtn{

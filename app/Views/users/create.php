@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 
-    <div class="container">
+    <div class="container main">
         <div class="row">
             <div class="col-lg-6 colTitle">
                 <h1>New User</h1>

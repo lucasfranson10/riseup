@@ -2,7 +2,7 @@
 
 <?= $this->section('content') ?>
 
-<div class="container">
+<div class="container main">
 	<div class="row">
 		<div class="col-md-3 createBtn">
 			<a href="/users/create" class="btn btn-primary" role="button">Create a new user</a>
